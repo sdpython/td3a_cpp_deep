@@ -135,6 +135,7 @@ epkg_dictionary = {
     'pybind11': 'https://github.com/pybind/pybind11',
     'pyinstrument': 'https://github.com/joerick/pyinstrument',
     'python': 'https://www.python.org/',
+    'pytorch': 'https://pytorch.org/docs/stable/torch.html',
     'py-spy': 'https://github.com/benfred/py-spy',
     'RUST': 'https://www.rust-lang.org/',
     'scikit-learn': 'https://scikit-learn.org/stable/',

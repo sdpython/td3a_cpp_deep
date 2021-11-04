@@ -1,8 +1,8 @@
 
-.. image:: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/master.svg?style=svg
-    :target: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/master
+.. image:: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/main.svg?style=svg
+    :target: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/main
 
-.. image:: https://travis-ci.com/sdpython/td3a_cpp_deep.svg?branch=master
+.. image:: https://travis-ci.com/sdpython/td3a_cpp_deep.svg?branch=main
     :target: https://app.travis-ci.com/github/sdpython/td3a_cpp_deep
     :alt: Build status
 
@@ -31,7 +31,7 @@
 td3a_cpp_deep: template to use cython and C++ with python
 ====================================================
 
-.. image:: https://raw.githubusercontent.com/sdpython/td3a_cpp_deep/master/doc/_static/logo.png
+.. image:: https://raw.githubusercontent.com/sdpython/td3a_cpp_deep/main/doc/_static/logo.png
     :width: 50
 
 `documentation <http://www.xavierdupre.fr/app/td3a_cpp_deep/helpsphinx/index.html>`_

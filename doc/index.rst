@@ -2,10 +2,10 @@
 td3a_cpp_deep: template for a python module with cython and openmp
 =============================================================
 
-.. image:: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/master.svg?style=svg
-    :target: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/master
+.. image:: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/main.svg?style=svg
+    :target: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/main
 
-.. image:: https://travis-ci.com/sdpython/td3a_cpp_deep.svg?branch=master
+.. image:: https://travis-ci.com/sdpython/td3a_cpp_deep.svg?branch=main
     :target: https://app.travis-ci.com/github/sdpython/td3a_cpp_deep
     :alt: Build status
 
