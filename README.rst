@@ -6,7 +6,7 @@
     :target: https://app.travis-ci.com/github/sdpython/td3a_cpp_deep
     :alt: Build status
 
-.. image:: https://ci.appveyor.com/api/projects/status/wvo6ovlaxi8ypua4?svg=true
+.. image:: https://ci.appveyor.com/api/projects/status/9db19ijdr8xplptj?svg=true
     :target: https://ci.appveyor.com/project/sdpython/td3a-cpp
     :alt: Build Status Windows
 
