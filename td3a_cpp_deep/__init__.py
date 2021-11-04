@@ -16,4 +16,3 @@ def check(verbose=1):
     :return: list of dictionaries, result of each test
     """
     return []
-    
