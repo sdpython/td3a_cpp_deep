@@ -1,0 +1,6 @@
+pybind11
+numpy
+scipy
+torch
+torchaudio
+torchvision

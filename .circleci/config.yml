@@ -1,0 +1,78 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.9.6
+    
+    working_directory: ~/repo
+    
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "requirements.txt" }}
+          - v2-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install torch==1.10.0+cpu torchvision==0.11.1+cpu torchaudio==0.10.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+            pip install -r requirements.txt
+            pip install -r requirements-dev.txt
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v2-dependencies-{{ checksum "requirements.txt" }}
+        
+      - run:
+          name: compile and build
+          command: |
+            . venv/bin/activate
+            python setup.py build_ext --inplace
+
+      - run:
+          name: run tests
+          command: |
+            . venv/bin/activate
+            coverage run  --omit=tests/test_*.py -m unittest discover tests -v -v
+
+      - run:
+          name: flake8
+          command: |
+            . venv/bin/activate
+            python -m flake8 tests
+            python -m flake8 td3a_cpp_deep
+            python -m flake8 examples
+
+      - run:
+          name: coverage
+          command: |
+            . venv/bin/activate
+            coverage html -d test-reports/coverage.html
+
+      - run:
+          name: wheel
+          command: |
+            . venv/bin/activate
+            python setup.py bdist_wheel
+            cp dist/*.whl test-reports
+
+      - run:
+          name: check speed
+          command: |
+            . venv/bin/activate
+            python -m td3a_cpp_deep check
+
+#      - run:
+#          name: documentation
+#          command: |
+#            . venv/bin/activate
+#            sphinx-build -D "sphinx_gallery_conf.filename_pattern=/plot_(?!long)" doc test-reports
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports

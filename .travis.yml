@@ -1,0 +1,22 @@
+dist: focal
+sudo: true
+language: python
+python:
+    - "3.9"
+install:
+  - pip install torch==1.10.0+cpu torchvision==0.11.1+cpu torchaudio==0.10.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+  - pip install -r requirements.txt
+  - pip install -r requirements-dev.txt
+before_script:
+  - gcc --version
+  - python setup.py build_ext --inplace
+script:
+  # - python -m unittest discover tests -v -v
+  - python -m pytest
+  - python -m flake8 tests
+  - python -m flake8 td3a_cpp_deep
+  - python -m flake8 examples
+  - python setup.py bdist_wheel
+  - python -m td3a_cpp_deep check
+  
+
