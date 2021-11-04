@@ -118,6 +118,8 @@ epkg_dictionary = {
          '#compiler-directives'),
     'concurrent.futures':
         'https://docs.python.org/3/library/concurrent.futures.html',
+    'Custom C++ and Cuda Extensions':
+        'https://pytorch.org/tutorials/advanced/cpp_extension.html',
     'cython': 'https://cython.org/',
     'JIT': 'https://en.wikipedia.org/wiki/Just-in-time_compilation',
     'joblib': 'https://joblib.readthedocs.io/',

@@ -42,6 +42,7 @@ class PiecewiseLinearFunctionC(Function):
     <td3a_cpp_deep.fcts.piecewise_linear_c.piecewise_linear_forward>` and
     :func:`piecewise_linear_backward
     <td3a_cpp_deep.fcts.piecewise_linear_c.piecewise_linear_backward>`.
+    It follows the tutorial :epkg:`Custom C++ and Cuda Extensions`.
     """
 
     @staticmethod

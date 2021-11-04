@@ -36,6 +36,14 @@ std::vector<torch::Tensor> piecewise_linear_backward(
 
 
 PYBIND11_MODULE(piecewise_linear_c, m) {
-  m.def("piecewise_linear_forward", &piecewise_linear_forward, "PiecewiseLinearC forward");
-  m.def("piecewise_linear_backward", &piecewise_linear_backward, "PiecewiseLinearC backward");
+	m.doc() =
+    #if defined(__APPLE__)
+    "C++ Implementation of piecise linear function."
+    #else
+    R"pbdoc(C++ Implementation of piecise linear function.)pbdoc"
+    #endif
+    ;
+
+    m.def("piecewise_linear_forward", &piecewise_linear_forward, "PiecewiseLinearC forward");
+    m.def("piecewise_linear_backward", &piecewise_linear_backward, "PiecewiseLinearC backward");
 }
