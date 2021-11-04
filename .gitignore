@@ -1,4 +1,7 @@
 *.pyc
+*.pyd
+*.dylib
+*.so
 coverage.html/*
 .coverage
 dist/*

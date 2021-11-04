@@ -3,12 +3,13 @@ Unit tests.
 """
 import unittest
 import torch
-from td3a_cpp_deep.fcts.piecewise_linear import PiecewiseLinearFunction
+from td3a_cpp_deep.fcts.piecewise_linear import (
+    PiecewiseLinearFunction, PiecewiseLinearFunctionC)
 
 
 class TestFctsPiecewiseLinear(unittest.TestCase):
 
-    def piecewise_linear(self, device):
+    def piecewise_linear(self, cls, device):
 
         x = torch.randn(100, 1, device=device, dtype=torch.float32)
         y = x * 0.2 + (x > 0).to(torch.float32) * x * 1.5
@@ -20,7 +21,7 @@ class TestFctsPiecewiseLinear(unittest.TestCase):
 
         losses = []
         learning_rate = 1e-4
-        fct = PiecewiseLinearFunction.apply
+        fct = cls.apply
 
         for t in range(400):
 
@@ -42,11 +43,18 @@ class TestFctsPiecewiseLinear(unittest.TestCase):
         self.assertTrue(abs(alpha_pos - 1.7) < 0.2)
 
     def test_piecewise_linear_cpu(self):
-        self.piecewise_linear(torch.device('cpu'))
+        self.piecewise_linear(PiecewiseLinearFunction, torch.device('cpu'))
 
     @unittest.skipIf(not torch.cuda.is_available(), reason="no GPU")
     def test_piecewise_linear_gpu(self):
-        self.piecewise_linear(torch.device("cuda:0"))
+        self.piecewise_linear(PiecewiseLinearFunction, torch.device("cuda:0"))
+
+    def test_piecewise_linear_c_cpu(self):
+        self.piecewise_linear(PiecewiseLinearFunctionC, torch.device('cpu'))
+
+    @unittest.skipIf(not torch.cuda.is_available(), reason="no GPU")
+    def test_piecewise_linear_c_gpu(self):
+        self.piecewise_linear(PiecewiseLinearFunctionC, torch.device("cuda:0"))
 
 
 if __name__ == '__main__':
