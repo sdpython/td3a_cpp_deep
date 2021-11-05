@@ -93,7 +93,7 @@ df = pandas.DataFrame()
 df['x'] = x.cpu().detach().numpy().ravel()
 df['y'] = y.cpu().detach().numpy().ravel()
 df['yp'] = PiecewiseLinearFunction.apply(
-    x, alpha_neg, alpha_pos).detach().numpy()
+    x, alpha_neg, alpha_pos).cpu().detach().numpy()
 
 fig, ax = plt.subplots(1, 2, figsize=(10, 4))
 df.plot.scatter(x="x", y='y', label="y", color="blue", ax=ax[0])
