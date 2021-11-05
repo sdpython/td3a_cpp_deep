@@ -1,6 +1,6 @@
 
-td3a_cpp_deep: template for a python module with cython and openmp
-=============================================================
+td3a_cpp_deep: template to implement torch extension
+====================================================
 
 .. image:: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/main.svg?style=svg
     :target: https://circleci.com/gh/sdpython/td3a_cpp_deep/tree/main
