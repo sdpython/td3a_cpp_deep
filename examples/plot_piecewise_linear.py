@@ -25,10 +25,11 @@ from td3a_cpp_deep.fcts.piecewise_linear import (
 def train_piecewise_linear(x, y, device, cls,
                            max_iter=400, learning_rate=1e-4):
 
-    alpha_pos = torch.tensor(
-        [1], dtype=torch.float32, requires_grad=True).to(device)
-    alpha_neg = torch.tensor(
-        [0.5], dtype=torch.float32, requires_grad=True).to(device)
+    alpha_pos = torch.tensor([1], dtype=torch.float32).to(device)
+    alpha_neg = torch.tensor([0.5], dtype=torch.float32).to(device)
+    alpha_pos.requires_grad_()
+    alpha_neg.requires_grad_()
+    
 
     losses = []
     fct = cls.apply
@@ -56,6 +57,7 @@ def train_piecewise_linear(x, y, device, cls,
 # +++++++++++++++++++++
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+print("device:", device)
 x = torch.randn(100, 1, device=device, dtype=torch.float32)
 y = x * 0.2 + (x > 0).to(torch.float32) * x * 1.5 + torch.randn(100, 1) / 5
 
