@@ -29,7 +29,6 @@ def train_piecewise_linear(x, y, device, cls,
     alpha_neg = torch.tensor([0.5], dtype=torch.float32).to(device)
     alpha_pos.requires_grad_()
     alpha_neg.requires_grad_()
-    
 
     losses = []
     fct = cls.apply
