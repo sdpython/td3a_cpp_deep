@@ -40,7 +40,6 @@ functions with :epkg:`pytorch`.
     api
     auto_examples/index
     dev
-    appendix/index
 
 Sources available on
 `github/td3a_cpp_deep <https://github.com/sdpython/td3a_cpp_deep>`_.
