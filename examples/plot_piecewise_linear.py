@@ -90,8 +90,8 @@ print("duration=%f, alpha_neg=%f alpha_pos=%f" %
 # ++++++
 
 df = pandas.DataFrame()
-df['x'] = x.detach().numpy().ravel()
-df['y'] = y.detach().numpy().ravel()
+df['x'] = x.cpu().detach().numpy().ravel()
+df['y'] = y.cpu().detach().numpy().ravel()
 df['yp'] = PiecewiseLinearFunction.apply(
     x, alpha_neg, alpha_pos).detach().numpy()
 
