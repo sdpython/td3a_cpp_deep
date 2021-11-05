@@ -58,8 +58,10 @@ def train_piecewise_linear(x, y, device, cls,
 
 device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 print("device:", device)
-x = torch.randn(100, 1, device=device, dtype=torch.float32)
+x = torch.randn(100, 1, dtype=torch.float32)
 y = x * 0.2 + (x > 0).to(torch.float32) * x * 1.5 + torch.randn(100, 1) / 5
+x = x.to(device).requires_grad_()
+y = y.to(device).requires_grad_()
 
 begin = time.perf_counter()
 losses, alpha_neg, alpha_pos = train_piecewise_linear(
