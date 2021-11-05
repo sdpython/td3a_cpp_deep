@@ -14,10 +14,10 @@ class TestFctsPiecewiseLinear(unittest.TestCase):
         x = torch.randn(100, 1, device=device, dtype=torch.float32)
         y = x * 0.2 + (x > 0).to(torch.float32) * x * 1.5
 
-        alpha_pos = torch.tensor(
-            [1], dtype=torch.float32, requires_grad=True).to(device)
-        alpha_neg = torch.tensor(
-            [0.5], dtype=torch.float32, requires_grad=True).to(device)
+        alpha_pos = torch.tensor([1], dtype=torch.float32).to(device)
+        alpha_neg = torch.tensor([0.5], dtype=torch.float32).to(device)
+        alpha_pos.requires_grad_()
+        alpha_neg.requires_grad_()
 
         losses = []
         learning_rate = 1e-4
