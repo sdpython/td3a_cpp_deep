@@ -28,7 +28,7 @@
     :target: https://github.com/sdpython/td3a_cpp_deep/
     :alt: size
 
-td3a_cpp_deep: template to use cython and C++ with python
+td3a_cpp_deep: template to implement torch extension
 ====================================================
 
 .. image:: https://raw.githubusercontent.com/sdpython/td3a_cpp_deep/main/doc/_static/logo.png
