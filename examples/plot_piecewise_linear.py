@@ -19,7 +19,9 @@ import pandas
 import matplotlib.pyplot as plt
 import torch
 from td3a_cpp_deep.fcts.piecewise_linear import (
-    PiecewiseLinearFunction, PiecewiseLinearFunctionC)
+    PiecewiseLinearFunction,
+    PiecewiseLinearFunctionC,
+    PiecewiseLinearFunctionCBetter)
 
 
 def train_piecewise_linear(x, y, device, cls,
@@ -80,9 +82,21 @@ end = time.perf_counter()
 print("duration=%f, alpha_neg=%f alpha_pos=%f" %
       (end - begin, alpha_neg, alpha_pos))
 
+################################
+# C++ implementation, second try
+# ++++++++++++++++++++++++++++++
+
+begin = time.perf_counter()
+losses, alpha_neg, alpha_pos = train_piecewise_linear(
+    x, y, device, PiecewiseLinearFunctionCBetter)
+end = time.perf_counter()
+print("duration=%f, alpha_neg=%f alpha_pos=%f" %
+      (end - begin, alpha_neg, alpha_pos))
+
 #################################
-# The C++ implementation is very close to the python code
-# and is not faster.
+# The C++ implementation is very close to the python code.
+# The second implementation in C++ is faster because
+# it reuses created tensors.
 
 ##################################
 # Graphs
