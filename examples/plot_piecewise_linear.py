@@ -68,8 +68,7 @@ begin = time.perf_counter()
 losses, alpha_neg, alpha_pos = train_piecewise_linear(
     x, y, device, PiecewiseLinearFunction)
 end = time.perf_counter()
-print("duration=%f, alpha_neg=%f alpha_pos=%f" %
-      (end - begin, alpha_neg, alpha_pos))
+print(f"duration={end - begin:f}, alpha_neg={alpha_neg:f} alpha_pos={alpha_pos:f}")
 
 ################################
 # C++ implementation
@@ -79,8 +78,7 @@ begin = time.perf_counter()
 losses, alpha_neg, alpha_pos = train_piecewise_linear(
     x, y, device, PiecewiseLinearFunctionC)
 end = time.perf_counter()
-print("duration=%f, alpha_neg=%f alpha_pos=%f" %
-      (end - begin, alpha_neg, alpha_pos))
+print(f"duration={end - begin:f}, alpha_neg={alpha_neg:f} alpha_pos={alpha_pos:f}")
 
 ################################
 # C++ implementation, second try
@@ -90,8 +88,7 @@ begin = time.perf_counter()
 losses, alpha_neg, alpha_pos = train_piecewise_linear(
     x, y, device, PiecewiseLinearFunctionCBetter)
 end = time.perf_counter()
-print("duration=%f, alpha_neg=%f alpha_pos=%f" %
-      (end - begin, alpha_neg, alpha_pos))
+print(f"duration={end - begin:f}, alpha_neg={alpha_neg:f} alpha_pos={alpha_pos:f}")
 
 #################################
 # The C++ implementation is very close to the python code.
