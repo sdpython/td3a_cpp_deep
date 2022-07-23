@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.9.6
+      - image: cimg/python:3.10.5
     
     working_directory: ~/repo
     
@@ -17,9 +17,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install torch==1.10.0+cpu torchvision==0.11.1+cpu torchaudio==0.10.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+            pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
             pip install -r requirements.txt
             pip install -r requirements-dev.txt
 
@@ -31,19 +29,16 @@ jobs:
       - run:
           name: compile and build
           command: |
-            . venv/bin/activate
             python setup.py build_ext --inplace
 
       - run:
           name: run tests
           command: |
-            . venv/bin/activate
             coverage run  --omit=tests/test_*.py -m unittest discover tests -v -v
 
       - run:
           name: flake8
           command: |
-            . venv/bin/activate
             python -m flake8 tests
             python -m flake8 td3a_cpp_deep
             python -m flake8 examples
@@ -51,20 +46,17 @@ jobs:
       - run:
           name: coverage
           command: |
-            . venv/bin/activate
             coverage html -d test-reports/coverage.html
 
       - run:
           name: wheel
           command: |
-            . venv/bin/activate
             python setup.py bdist_wheel
             cp dist/*.whl test-reports
 
       - run:
           name: check speed
           command: |
-            . venv/bin/activate
             python -m td3a_cpp_deep check
 
 #      - run:

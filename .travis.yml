@@ -4,7 +4,7 @@ language: python
 python:
     - "3.9"
 install:
-  - pip install torch==1.10.0+cpu torchvision==0.11.1+cpu torchaudio==0.10.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+  - pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
   - pip install -r requirements.txt
   - pip install -r requirements-dev.txt
 before_script:
