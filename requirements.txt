@@ -1,6 +1,6 @@
 pybind11
 numpy
 scipy
-torch
+torch>=2.0
 torchaudio
 torchvision
